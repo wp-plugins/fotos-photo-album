@@ -9,11 +9,11 @@ class fotos_es_admin extends fotos_es {
 	}
 
 	function upload_tabs_scripts() {
-                $path = get_settings('siteurl') . '/wp-content/plugins/fotos.es/js/fotos.es.js';
+                $path = get_settings('siteurl') . '/wp-content/plugins/fotos-photo-album/js/fotos.es.js';
                 echo '<script type="text/javascript" src="'.$path.'?ver=2.10"></script>'."\n";
 	
 
-		echo '<link rel="stylesheet" href="'.get_settings('siteurl').'/wp-content/plugins/fotos.es/rcs/fotos.es.admin.css?var=0.1" type="text/css" />';
+		echo '<link rel="stylesheet" href="'.get_settings('siteurl').'/wp-content/plugins/fotos-photo-album/rcs/fotos.es.admin.css?var=0.1" type="text/css" />';
 	
 	}
 
@@ -46,7 +46,7 @@ class fotos_es_admin extends fotos_es {
 		global $post_ID, $temp_ID;
 		$dir = dirname(__FILE__);
 
-		$image_btn = get_option('siteurl').'/wp-content/plugins/fotos.es/rcs/fotos_16x16.gif';
+		$image_btn = get_option('siteurl').'/wp-content/plugins/fotos-photo-album/rcs/fotos_16x16.gif';
 		$image_title = 'Fotos.es';
 		
 		$uploading_iframe_ID = (int) (0 == $post_ID ? $temp_ID : $post_ID);

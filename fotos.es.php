@@ -1,12 +1,15 @@
 <?php
 /*
-Plugin Name: Fotos.es Photo Album
+Plugin Name: Fotos Photo Album 
 Plugin URI: http://www.fotos.es
-Description: Fotos.es is the right place for uploading photos, creating albums and sharing your favourite pictures with family and friends. Fotos.es also has a tool for search pictures organized by tags.
+Description: Include and show your favourite Fotos.es photos and albums inside your blog with this easy-to-install plugin 
 Version: 0.4
+Author: Fotos.es 
+Author URI: http://www.fotos.es/
+
 */
 define('FOTOS_ES_API','http://www.fotos.es/api/');
-define('FOTOS_ES_VERSION', '0.3');
+define('FOTOS_ES_VERSION', '0.4');
 
 
 $fotos_es_iframeRendered = false;
@@ -41,15 +44,15 @@ class fotos_es {
 	} 
 
 	function add_head() {
-		$path = get_settings('siteurl') . '/wp-content/plugins/fotos.es/rcs/fotos.es.css';
+		$path = get_settings('siteurl') . '/wp-content/plugins/fotos-photo-album/rcs/fotos.es.css';
 		echo '<link rel="stylesheet" href="'.$path.'" type="text/css" />'."\n";
-		$path = get_settings('siteurl') . '/wp-content/plugins/fotos.es/js/fotos.es.thickbox.js';
+		$path = get_settings('siteurl') . '/wp-content/plugins/fotos-photo-album/js/fotos.es.thickbox.js';
 		echo '<script type="text/javascript" src="'.$path.'?ver='.FOTOS_ES_VERSION.'"></script>'."\n";
-		$path = get_settings('siteurl') . '/wp-content/plugins/fotos.es/js/fotos.es.js';
+		$path = get_settings('siteurl') . '/wp-content/plugins/fotos-photo-album/js/fotos.es.js';
 		echo '<script type="text/javascript" src="'.$path.'?ver='.FOTOS_ES_VERSION.'"></script>'."\n";
-		$path = get_settings('siteurl') . '/wp-content/plugins/fotos.es/js/jquery.blockUI.js';
+		$path = get_settings('siteurl') . '/wp-content/plugins/fotos-photo-album/js/jquery.blockUI.js';
 		echo '<script type="text/javascript" src="'.$path.'?ver='.FOTOS_ES_VERSION.'"></script>'."\n";
-		echo '<script type="text/javascript">var fotos_es_plugin_url = "'.get_settings('siteurl').'/wp-content/plugins/fotos.es/fotos.es.php";</script>'."\n";
+		echo '<script type="text/javascript">var fotos_es_plugin_url = "'.get_settings('siteurl').'/wp-content/plugins/fotos-photo-album/fotos.es.php";</script>'."\n";
 
 	}
 
@@ -96,7 +99,7 @@ class fotos_es {
 			$title = '<a target="_blank" class="fotos-es-link" href="http://'.$photos['user']['username'].'.fotos.es/" title="Fotos de '.$photos['user']['username'].'">Fotos de ' . $photos['user']['username'].'</a>';
 		} else if ( (int)$config['album'] > 0 && strlen($config['user']) > 0 ) {
 			$photos = fotos_es::get_photos_from_album((int)$config['album'],(int)$config['size'],$offset,(int)$config['limit']);
-			$title = '<a target="_blank" class="fotos-es-link" href="http://'.$photos['user']['username'].'.fotos.es/'.$photos['album']['url'].'" title="Fotos de '.$photos['album']['title'].'">Fotos de ' . $photos['album']['title'].'</a>';
+                        $title = '<a class="fotos-es-link" target="_blank" href="http://'.$photos['user']['username'].'.fotos.es/'.$photos['album']['url'].'/" title="Fotos de '.$photos['album']['title'].'">Fotos de ' . $photos['album']['title'].'</a>';
 		}
 		if (!$ajax) { $output[] = '<div id="fotos-es-'.$key.'" class="fotos-es-plugin">'; }
 		$output[] =  fotos_es::render_photos($config_str,$key,$photos['user'],$photos['photos'],$photos['total'],$title,$offset,$config['limit']);

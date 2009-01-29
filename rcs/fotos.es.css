@@ -45,7 +45,7 @@
 #TB_caption { text-align:center; } 
 .fotos-es-logo h2 { font-size:2px !important; margin:0 !important; background:none !important; border:0 !important; }
 .fotos-es-logo {
-	background: transparent url(http://dc14.fotos.es/smf/fotos.es/rcs/fotos_16x16.gif) no-repeat scroll center top !important;
+	background: transparent url(fotos_16x16.gif) no-repeat scroll center top !important;
 	background-color:transparent !important;
         display:block !important;
         float:left !important;
