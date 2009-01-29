@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Fotos.es Image Gallery
+Plugin Name: Fotos.es Photo Album
 Plugin URI: http://www.fotos.es
 Description: Fotos.es is the right place for uploading photos, creating albums and sharing your favourite pictures with family and friends. Fotos.es also has a tool for search pictures organized by tags.
-Version: 0.1
+Version: 0.4
 */
 define('FOTOS_ES_API','http://www.fotos.es/api/');
 define('FOTOS_ES_VERSION', '0.3');
