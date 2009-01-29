@@ -1,0 +1,79 @@
+<div class="tablenav">
+<form method="get" id="photos" action="<?php echo (ereg('media-upload.php', $_SERVER['REQUEST_URI']) ? 'media-upload.php' : 'upload.php');?>">
+<input type="hidden" name="tab" value="<?php echo $_GET['tab'];?>" />
+<input type="hidden" name="post_id" value="<?php echo $_GET['post_id'];?>" />
+<input type="hidden" name="action" value="<?php echo $_GET['action'];?>" />
+<input type="hidden" name="style" value="<?php echo $_GET['style'];?>" />
+<input type="hidden" name="_wpnonce" value="<?php echo $_GET['_wpnonce'];?>" />
+<input type="hidden" name="ID" value="<?php echo $_GET['ID'];?>" />
+
+&nbsp;<?php _e('Usuario','fotos-es'); ?>:<input type="text" name="username" id="fotos-username" value="<?php echo $username; ?>"/>
+<input type="submit" name="search"  value="<?php _e('Buscar', 'fotos-es');?>" />
+</form>
+</div>
+<?php
+if ( strlen($_GET['username']) == 0 ) {
+	echo '<div class="fotos-es-empty">Para ver los albums de un usuario debes buscar, por su nombre o direcci&oacute;n de fotos.es.</div>';
+
+} else {
+	if ( !$albums ) {
+		echo '<div class="fotos-es-empty fotos-es-error" >El usuario no tiene albums o no existe.</div>';
+
+	} else {
+
+		$output = Array();
+		$output[] = '<div class="fotos-es-list" id="fotos-es-admin-albums">';
+		$output[] = '<div class="fotos-es-empty fotos-es-admin-allphotos">>>
+			<a onclick="javascript:fotos_es.admin_options(\''.$user['username'].'\',false,\''.$user['username'].'\',false,\''.$user['url'].'\');return false;" >
+			'.__('Mostrar todas las fotos del usuario','fotos-es').'
+			</a> '.__('o elegir un album','fotos-es').'
+		</div>';
+
+		for ($i=0;$i<count($albums);$i++) {
+			$output[]='<div class="fotos-es-photo">';
+				$url = 'http://'.$user['username'].'.fotos.es'.$albums[$i]['link'];
+		        	$output[]='<a onclick="javascript:fotos_es.admin_options(\''.$user['username'].'\','.$albums[$i]['id'].',\''.$albums[$i]['title'].'\','.$albums[$i]['number'].',\''.$url.'\');return false;" id="fotos-es-album-'.$albums[$i]['id'].'" title="'.$albums[$i]['title'].'"> ';
+					$tmp = explode("\n",wordwrap($albums[$i]['title'], 20, "\n", true));
+					if ( count($tmp) > 1 ) { $title = $tmp[0].'...'; } else { $title = $tmp[0]; }
+        		        	$output[]='<img src="'.$albums[$i]['cover'].'" alt="'.$albums[$i]['title'].'" />';
+					$output[]='<span>'.$title.'</span>';
+		                $output[]='</a>';
+		        $output[]='</div>';
+		}
+		$output[] = '</div><div style="clear:both;"></div>';
+		echo implode("\n",$output);
+	}
+}
+?>
+<div class="photo-options" id="photo-meta" style="display:none;"></div>
+<div class="photo-options fotos-es-options" id="album-insert" style="display:none;">
+<form>
+<input type="hidden" name="photo-id" id="photo-id" value="" />
+<input type="hidden" name="photo-user" id="photo-user" value="" />
+<table class="describe album">
+<tbody>
+<tr>
+    <th class="label" valign="top" scope="row"><label><?php _e('Fotos por p&aacute;gina', 'fotos-es');?></label></th>
+    <td class="field">
+        <input type="text" name="album-insert-photos" style="width:30px;display:inline;" id="album-insert-num"  value="5"><label for="album-insert-5"> <?php  _e('N&uacute;mero de fotos (Max. 50)', 'fotos-es');?></label><br />
+	</td>
+</tr>
+<tr>
+    <th class="label" valign="top" scope="row"><label><?php _e('Tama&ntilde;o', 'fotos-es');?></label></th>
+    <td class="field">
+		<input name="album-image-size" id="album-image-size-thumb" value="0" type="radio" checked="checked">
+		<label for="album-image-size-thumb"><?php _e('Peque&ntilde;o', 'fotos-es');?> (80x80)</label><br />
+		<input name="album-image-size" id="album-image-size-small" value="1" type="radio">
+		<label for="album-image-size-small"><?php _e('Normal', 'fotos-es');?> (130x130)</label><br />
+    </td></tr>
+<tr class="submit">
+    <td>&nbsp;</td>
+    <td class="savesend">
+        <input type="button" value="<?php _e('Inserta en la anotaci&oacute;n', 'fotos-es');?>" name="send" class="button send"/> 
+        <input type="button" value="<?php _e('Cancelar', 'fotos-es');?>" name="cancel" class="button cancel"/> 
+        </td></tr>
+        
+</tbody>
+
+</table>
+</form>

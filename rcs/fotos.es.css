@@ -1,0 +1,57 @@
+.fotos-es-plugin {
+	margin-top:9px !important;
+	margin-bottom:9px !important;
+}
+
+.fotos-es-list { clear:both; }
+.fotos-es-title {
+	margin-left:4px !important;
+	font-size:12pt !important;
+	font-weight:bold !important;
+}
+.fotos-es-photo {
+	float:left !important;
+}
+.fotos-es-photo img {
+	border:1px solid black !important;
+	margin:4px !important;
+}
+.fotos-es-navigation {
+	margin:4px !important;
+}
+.fotos-es-loading {
+	width:32px !important; height:32px !important;
+}
+.fotos-es-thickbox-caption .fotos-es-link { font-size:12pt; }
+.fotos-es-thickbox-caption  {
+	display:block !important;
+	float:left !important;
+	font-size:12pt !important;
+	margin:0 !important;
+	margin-left:12px !important;
+	margin-top:9px !important;
+}
+
+.fotos-es-prev {margin-right:10px !important; }
+
+.fotos-es-tb-prev  { float:left !important;}
+.fotos-es-tb-next { float:right !important; }
+.fotos-es-tb-caption { float:none !important; }
+
+#TB_closeWindow { 
+	height:auto !important;
+	padding-bottom: 0 !important;
+}
+#TB_caption { text-align:center; } 
+.fotos-es-logo h2 { font-size:2px !important; margin:0 !important; background:none !important; border:0 !important; }
+.fotos-es-logo {
+	background: transparent url(http://dc14.fotos.es/smf/fotos.es/rcs/fotos_16x16.gif) no-repeat scroll center top !important;
+	background-color:transparent !important;
+        display:block !important;
+        float:left !important;
+        height:16px !important;
+        text-indent:-10000px !important;
+        width:30px !important;
+	border:0px solid black !important;
+}
+

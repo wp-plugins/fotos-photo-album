@@ -1,0 +1,42 @@
+.fotos-es-plugin {
+	margin-top:9px;
+	margin-bottom:9px;
+}
+.fotos-es-title {
+	margin-left:4px;
+	font-size:12pt;
+	font-weight:bold;
+}
+.fotos-es-photo {
+	float:left;
+}
+.fotos-es-photo img {
+	border:1px solid black;
+	margin:4px;
+}
+.fotos-es-photo span {
+	display:block;
+	font-size:11px;
+	height:14px;
+	margin-bottom:5px;
+	overflow:hidden;
+	text-align:center;
+	width:130px;
+}
+.fotos-es-navigation {
+	margin:4px;
+}
+.fotos-es-loading {
+	width:32px; height:32px;
+}
+.fotos-es-options th { padding:0 !important; }
+.fotos-es-options td { padding-bottom:25px !important; } 
+.fotos-es-options label { cursor:default; } 
+.fotos-es-error { color:#D54E21; }
+.fotos-es-empty { 
+	margin:5px; 
+	margin-top:15px;
+	font-style:italic;
+	width:380px;
+}
+
